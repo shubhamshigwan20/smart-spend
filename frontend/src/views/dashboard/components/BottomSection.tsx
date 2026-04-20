@@ -45,7 +45,13 @@ const BottomSection = (props: BottomSectionProps) => {
                 <th className="pb-4 font-bold text-right">Amount</th>
               </tr>
             </thead>
+
             <tbody className="divide-y divide-slate-50">
+              {!transactions.length && (
+                <p className="w-full h-full flex items-center justify-center border border-1 border-blue-500">
+                  No Data to Show
+                </p>
+              )}
               {transactions.map((tx: Transaction, i: number) => (
                 <tr
                   key={i}

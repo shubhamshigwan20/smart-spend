@@ -22,7 +22,7 @@ const SummaryCards = (props: SummaryCardsProps) => {
   const { stats } = props;
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {stats.map((stat: SummaryCard) => (
+      {stats?.map((stat: SummaryCard) => (
         <div
           key={stat.label}
           className="bg-white p-6 rounded-2xl shadow-sm border border-slate-50 transition-all hover:shadow-md hover:-translate-y-1 cursor-default"
