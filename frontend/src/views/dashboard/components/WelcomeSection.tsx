@@ -1,40 +1,45 @@
-import aiInsightsIcon from "../../../assets/ai_insights_icon.png";
+// import aiInsightsIcon from "../../../assets/ai_insights_icon.png";
+import { Sparkles } from "lucide-react";
 
 type WelcomeSectionProps = {
   userName: string;
-  aiSmartInsightsMessages: string[];
 };
 
 const WelcomeSection = (props: WelcomeSectionProps) => {
-  const { userName, aiSmartInsightsMessages } = props;
+  const { userName } = props;
   return (
-    <div className="w-full h-[156px] flex justify-between gap-[24px]">
-      <div className="w-[64%] flex-col">
-        <p className="font-inter font-bold text-[2.5rem] leading-[2.5rem] tracking-[-0.0625rem]">
-          Good Morning, {userName}.
-        </p>
-        <p className="font-inter font-medium text-[1rem] leading-[1.5rem] tracking-[0rem]">
+    <section className="flex flex-col lg:flex-row gap-6">
+      <div className="flex-1">
+        <h2 className="text-[2.5rem] font-bold tracking-tight text-slate-900 leading-none mb-2">
+          Good morning, {userName}.
+        </h2>
+        <p className="text-slate-500 font-medium">
           Your financial vault is secure. Here's your summary for October.
         </p>
       </div>
-      <div className="w-[33%] flex gap-[16px] p-[24px] bg-[#4F46E5] rounded-[12px]">
-        <div className="w-[38px] h-[38px]">
-          <img src={aiInsightsIcon} width="38px" height="38px" alt="" />
-        </div>
-        <div className="flex-col gap-[4px]">
-          <p className="font-inter font-bold text-xs leading-4 tracking-[0.075rem] text-white">
-            AI SMART INSIGHTS
-          </p>
-          <ul className="list-disc pl-5">
-            {aiSmartInsightsMessages?.map((insight) => (
-              <li className="font-inter font-medium text-sm leading-5 tracking-normal text-white">
-                {insight}
+
+      <div className="lg:w-1/3 bg-gradient-to-br from-[#3525cd] to-[#4f46e5] text-white p-6 rounded-2xl shadow-xl shadow-indigo-200/50 relative overflow-hidden group">
+        <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+        <div className="flex items-start gap-4 relative z-10">
+          <div className="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+            <Sparkles size={20} fill="currentColor" />
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">
+              AI Smart Insights
+            </p>
+            <ul className="text-sm space-y-2 font-medium">
+              <li className="flex items-center gap-2">
+                • You spent 30% more on food this week.
               </li>
-            ))}
-          </ul>
+              <li className="flex items-center gap-2">
+                • Suggestion: Cancel 2 unused subscriptions.
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
