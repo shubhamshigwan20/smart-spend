@@ -1,17 +1,19 @@
 // import aiInsightsIcon from "../../../assets/ai_insights_icon.png";
 import { Sparkles } from "lucide-react";
+import { useAuth } from "../../../context/AuthContext";
 
 type WelcomeSectionProps = {
-  userName: string;
+  aiInsights: string[];
 };
 
 const WelcomeSection = (props: WelcomeSectionProps) => {
-  const { userName } = props;
+  const { aiInsights } = props;
+  const { user } = useAuth();
   return (
     <section className="flex flex-col lg:flex-row gap-6">
       <div className="flex-1">
         <h2 className="text-[2.5rem] font-bold tracking-tight text-slate-900 leading-none mb-2">
-          Good morning, {userName}.
+          Good morning, {user.name}.
         </h2>
         <p className="text-slate-500 font-medium">
           Your financial vault is secure. Here's your summary for October.
@@ -29,12 +31,9 @@ const WelcomeSection = (props: WelcomeSectionProps) => {
               AI Smart Insights
             </p>
             <ul className="text-sm space-y-2 font-medium">
-              <li className="flex items-center gap-2">
-                • You spent 30% more on food this week.
-              </li>
-              <li className="flex items-center gap-2">
-                • Suggestion: Cancel 2 unused subscriptions.
-              </li>
+              {aiInsights.map((insight) => (
+                <li className="flex items-center gap-2">{insight}</li>
+              ))}
             </ul>
           </div>
         </div>

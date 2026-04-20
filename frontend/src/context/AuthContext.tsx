@@ -19,7 +19,7 @@ type AuthProviderProps = {
 
 const emptyUser: User = {
   id: "",
-  name: "",
+  name: "Alex",
   email: "",
 };
 

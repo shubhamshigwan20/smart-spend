@@ -103,9 +103,14 @@ const Dashboard = () => {
       color: "bg-slate-50 text-slate-800 border-slate-400 opacity-60",
     },
   ];
+
+  const aiInsights = [
+    "You spent 30% more on food this week.",
+    "Suggestion: Cancel 2 unused subscriptions.",
+  ];
   return (
     <div className="w-full flex-col p-[32px] gap-[32px]">
-      <WelcomeSection userName="Alex" />
+      <WelcomeSection aiInsights={aiInsights} />
       <SummaryCards stats={stats} />
       <ChartsSection trendData={trendData} categoryData={categoryData} />
       <BottomSection transactions={transactions} alerts={alerts} />
