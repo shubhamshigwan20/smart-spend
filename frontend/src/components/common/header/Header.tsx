@@ -5,7 +5,7 @@ import UserCard from "./components/UserCard";
 const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   return (
-    <div className="w-full h-[64px] p-[32px] flex items-center justify-end border border-2 border-black-200">
+    <div className="w-full h-[64px] p-[32px] flex items-center justify-end ">
       <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
       <UserCard />
     </div>

@@ -1,15 +1,19 @@
 import Header from "./common/header/Header";
 import Footer from "./common/footer/Footer";
+import Sidebar from "./common/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+    <div className="flex justify-between">
+      <Sidebar />
+      <div className="flex-col w-[81.25%] right-0">
+        <Header />
+        <main className="">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
