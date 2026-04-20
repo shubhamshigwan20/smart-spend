@@ -1,7 +1,15 @@
-import React from "react";
+import { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import UserCard from "./components/UserCard";
 
 const Header = () => {
-  return <div className="w-20 h-20 border-1 border-blue-500">Header</div>;
+  const [searchValue, setSearchValue] = useState("");
+  return (
+    <div className="w-full h-[64px] p-[32px] flex items-center justify-end border border-2 border-black-200">
+      <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+      <UserCard />
+    </div>
+  );
 };
 
 export default Header;
