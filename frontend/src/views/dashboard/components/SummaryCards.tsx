@@ -24,9 +24,9 @@ const SummaryCards = (props: SummaryCardsProps) => {
       {stats?.map((stat: SummaryCard) => (
         <div
           key={stat.label}
-          className="bg-white p-6 rounded-2xl shadow-sm border border-slate-50 transition-all hover:shadow-md hover:-translate-y-1 cursor-default"
+          className="bg-white dark:bg-[#1F2937] p-6 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700 transition-all hover:shadow-md hover:-translate-y-1 cursor-default"
         >
-          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 mb-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 dark:text-slate-500 mb-4">
             {stat.label}
           </p>
           <h3 className="text-3xl font-bold text-slate-900 mb-2 tracking-tight">
@@ -39,9 +39,9 @@ const SummaryCards = (props: SummaryCardsProps) => {
             </div>
           )}
           {stat.progress !== undefined && (
-            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-4">
+            <div className="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden mt-4">
               <div
-                className="bg-indigo-600 h-full"
+                className="bg-indigo-600 dark:bg-[#4F46E5] h-full"
                 style={{ width: `${stat.progress}%` }}
               />
             </div>
@@ -52,14 +52,14 @@ const SummaryCards = (props: SummaryCardsProps) => {
                 <div
                   key={i}
                   className={cn(
-                    "w-8 h-8 rounded-full flex items-center justify-center border-2 border-white text-[10px] font-bold",
+                    "w-8 h-8 rounded-full flex items-center justify-center border-2 border-white dark:border-[#1F2937] text-[10px] font-bold",
                     text === "NF"
                       ? "bg-red-100 text-red-600"
                       : text === "PR"
                         ? "bg-blue-100 text-blue-600"
                         : text === "SP"
                           ? "bg-green-100 text-green-600"
-                          : "bg-slate-100 text-slate-500",
+                          : "bg-slate-100 dark:bg-slate-700 text-slate-500",
                   )}
                 >
                   {text}

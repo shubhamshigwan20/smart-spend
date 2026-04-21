@@ -28,7 +28,7 @@ const BottomSection = (props: BottomSectionProps) => {
   return (
     <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* Recent Transactions */}
-      <div className="lg:col-span-2 bg-white p-8 rounded-2xl shadow-sm border border-slate-50">
+      <div className="lg:col-span-2 bg-white dark:bg-[#1F2937] p-8 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700">
         <div className="flex justify-between items-center mb-8">
           <h4 className="text-lg font-bold text-slate-900">Recent Expenses</h4>
           <button className="text-indigo-600 text-sm font-bold hover:underline transition-all">
@@ -38,7 +38,7 @@ const BottomSection = (props: BottomSectionProps) => {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="text-[10px] uppercase tracking-widest text-slate-400">
+              <tr className="text-[10px] uppercase tracking-widest text-slate-400 dark:text-slate-500">
                 <th className="pb-4 font-bold">Recipient</th>
                 <th className="pb-4 font-bold">Category</th>
                 <th className="pb-4 font-bold">Date</th>
@@ -71,7 +71,7 @@ const BottomSection = (props: BottomSectionProps) => {
                         <p className="font-bold text-slate-900">
                           {tx.recipient}
                         </p>
-                        <p className="text-[10px] text-slate-400 uppercase font-bold">
+                        <p className="text-[10px] text-slate-400 dark:text-slate-500 uppercase font-bold">
                           {tx.sub}
                         </p>
                       </div>
@@ -102,7 +102,7 @@ const BottomSection = (props: BottomSectionProps) => {
       </div>
 
       {/* Action Required */}
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-50 flex flex-col">
+      <div className="bg-white dark:bg-[#1F2937] p-8 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700 flex flex-col">
         <h4 className="text-lg font-bold text-slate-900 mb-6">
           Action Required
         </h4>
@@ -129,7 +129,7 @@ const BottomSection = (props: BottomSectionProps) => {
             </div>
           ))}
         </div>
-        <button className="mt-8 w-full py-4 border-2 border-dashed border-slate-100 rounded-xl text-slate-400 text-sm font-bold hover:bg-slate-50 hover:border-slate-200 transition-all flex items-center justify-center gap-2">
+        <button className="mt-8 w-full py-4 border-2 border-dashed border-slate-100 rounded-xl text-slate-400 dark:text-slate-500 text-sm font-bold hover:bg-slate-50 hover:border-slate-200 transition-all flex items-center justify-center gap-2">
           <span className="text-lg">+</span> Add New Alert
         </button>
       </div>

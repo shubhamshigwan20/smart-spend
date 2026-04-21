@@ -43,7 +43,7 @@ const ChartsSection = (props: ChartsSectionProps) => {
   return (
     <section className="flex flex-col lg:flex-row gap-6">
       {/* Trend Chart */}
-      <div className="lg:w-[70%] bg-white p-8 rounded-2xl shadow-sm border border-slate-50">
+      <div className="lg:w-[70%] bg-white dark:bg-[#1F2937] p-8 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700">
         <div className="flex justify-between items-end mb-8">
           <div>
             <h4 className="text-lg font-bold text-slate-900">Spending Trend</h4>
@@ -53,13 +53,13 @@ const ChartsSection = (props: ChartsSectionProps) => {
           </div>
           <div className="flex gap-2 p-1 bg-slate-50 rounded-xl">
             <button
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${trendType === "week" ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200" : "text-slate-500 hover:text-slate-900 "}`}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${trendType === "week" ? "bg-indigo-600 dark:bg-[#4F46E5] text-white shadow-lg shadow-indigo-200" : "text-slate-500 hover:text-slate-900 "}`}
               onClick={() => setTrendType("week")}
             >
               WEEK
             </button>
             <button
-              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${trendType === "month" ? "bg-indigo-600 text-white shadow-lg shadow-indigo-200" : "text-slate-500 hover:text-slate-900 "}`}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${trendType === "month" ? "bg-indigo-600 dark:bg-[#4F46E5] text-white shadow-lg shadow-indigo-200" : "text-slate-500 hover:text-slate-900 "}`}
               onClick={() => setTrendType("month")}
             >
               MONTH
@@ -116,7 +116,7 @@ const ChartsSection = (props: ChartsSectionProps) => {
       </div>
 
       {/* Category Split */}
-      <div className="lg:w-[30%] bg-white p-8 rounded-2xl shadow-sm border border-slate-50 flex flex-col">
+      <div className="lg:w-[30%] bg-white dark:bg-[#1F2937] p-8 rounded-2xl shadow-sm border border-slate-50 dark:border-slate-700 flex flex-col">
         <h4 className="text-lg font-bold text-slate-900 mb-1">
           Category Split
         </h4>
@@ -154,7 +154,7 @@ const ChartsSection = (props: ChartsSectionProps) => {
               <span className="text-3xl font-bold text-slate-900">
                 ₹{getTotalAmount()}
               </span>
-              <span className="text-[10px] uppercase font-black text-slate-400 tracking-widest">
+              <span className="text-[10px] uppercase font-black text-slate-400 dark:text-slate-500 tracking-widest">
                 Total
               </span>
             </div>

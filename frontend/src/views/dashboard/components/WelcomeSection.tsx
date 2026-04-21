@@ -21,9 +21,9 @@ const WelcomeSection = (props: WelcomeSectionProps) => {
       </div>
 
       <div className="lg:w-1/3 bg-gradient-to-br from-[#3525cd] to-[#4f46e5] text-white p-6 rounded-2xl shadow-xl shadow-indigo-200/50 relative overflow-hidden group">
-        <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
+        <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 dark:bg-[#1F2937]/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
         <div className="flex items-start gap-4 relative z-10">
-          <div className="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+          <div className="bg-white/20 dark:bg-[#1F2937]/20 p-2 rounded-xl backdrop-blur-md">
             <Sparkles size={20} fill="currentColor" />
           </div>
           <div>
