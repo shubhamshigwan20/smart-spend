@@ -23,8 +23,8 @@ type Category = {
 type ChartsSectionProps = {
   trendData: Trend[];
   categoryData: Category[];
-  trendType: string;
-  setTrendType: (trend: string) => void;
+  trendType: "week" | "month";
+  setTrendType: (trend: "week" | "month") => void;
 };
 
 const ChartsSection = (props: ChartsSectionProps) => {

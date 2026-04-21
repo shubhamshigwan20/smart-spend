@@ -149,19 +149,46 @@ const Dashboard = () => {
   // ];
 
   useEffect(() => {
+    const controller = new AbortController();
+    const fetchTrendData = async () => {
+      try {
+        const moneyTrendPromise = await api.get(GET_MONEY_TREND(trendType), {
+          signal: controller.signal,
+        });
+        setTrendData(moneyTrendPromise.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchTrendData();
+    return () => {
+      return controller.abort();
+    };
+  }, [trendType]);
+
+  useEffect(() => {
     //all api calls to load data
+    const controller = new AbortController();
 
     const fetchData = async () => {
-      const summaryDataPromise = await api.get(GET_SUMMARY);
-      const categoryBreakdownPromise = await api.get(GET_CATEGORY_BREAKDOWN);
-      const moneyTrendPromise = await api.get(GET_MONEY_TREND(trendType));
-      const expenseDataPromise = await api.get(GET_EXPENSES(5, 10));
-      const alertsPromise = await api.get(GET_ALERTS);
-      const insightsPromise = await api.get(GET_INSIGHTS);
+      const summaryDataPromise = api.get(GET_SUMMARY, {
+        signal: controller.signal,
+      });
+      const categoryBreakdownPromise = api.get(GET_CATEGORY_BREAKDOWN, {
+        signal: controller.signal,
+      });
+      const expenseDataPromise = api.get(GET_EXPENSES(5, 10), {
+        signal: controller.signal,
+      });
+      const alertsPromise = api.get(GET_ALERTS, {
+        signal: controller.signal,
+      });
+      const insightsPromise = api.get(GET_INSIGHTS, {
+        signal: controller.signal,
+      });
       const promisesArray = [
         summaryDataPromise,
         categoryBreakdownPromise,
-        moneyTrendPromise,
         expenseDataPromise,
         alertsPromise,
         insightsPromise,
@@ -173,44 +200,40 @@ const Dashboard = () => {
           const resultData = result.value.data;
 
           switch (idx) {
-            case 1:
+            case 0:
               setStats(resultData);
               break;
 
-            case 2:
+            case 1:
               setCategoryData(resultData);
               break;
 
-            case 3:
-              setTrendData(resultData);
-              break;
-
-            case 4:
+            case 2:
               setTransactions(resultData);
               break;
 
-            case 5:
+            case 3:
               setAlerts(resultData);
               break;
 
-            case 6:
+            case 4:
               setAiInsights(resultData);
               break;
           }
         }
       });
+      setLoader(false);
     };
     try {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoader(true);
       fetchData();
-      setLoader(false);
     } catch (err) {
       setLoader(false);
       console.log(err);
     }
     return () => {
-      //abort controller
+      return controller.abort();
     };
   }, []);
   return (
