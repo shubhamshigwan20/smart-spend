@@ -61,67 +61,66 @@ const useDashboard = () => {
     const controller = new AbortController();
 
     const fetchData = async () => {
-      const summaryDataPromise = api.get(GET_SUMMARY, {
-        signal: controller.signal,
-      });
-      const categoryBreakdownPromise = api.get(GET_CATEGORY_BREAKDOWN, {
-        signal: controller.signal,
-      });
-      const expenseDataPromise = api.get(GET_EXPENSES(5, 10), {
-        signal: controller.signal,
-      });
-      const alertsPromise = api.get(GET_ALERTS, {
-        signal: controller.signal,
-      });
-      const insightsPromise = api.get(GET_INSIGHTS, {
-        signal: controller.signal,
-      });
-      const promisesArray = [
-        summaryDataPromise,
-        categoryBreakdownPromise,
-        expenseDataPromise,
-        alertsPromise,
-        insightsPromise,
-      ];
-      const results = await Promise.allSettled(promisesArray);
-
-      results.forEach((result, idx) => {
-        if (result.status === "fulfilled") {
-          const resultData = result.value.data;
-
-          switch (idx) {
-            case 0:
-              setStats(resultData);
-              break;
-
-            case 1:
-              setCategoryData(resultData);
-              break;
-
-            case 2:
-              setTransactions(resultData);
-              break;
-
-            case 3:
-              setAlerts(resultData);
-              break;
-
-            case 4:
-              setAiInsights(resultData);
-              break;
-          }
-        }
-      });
-      setLoader(false);
-    };
-    try {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoader(true);
-      fetchData();
-    } catch (err) {
-      setLoader(false);
-      console.log(err);
-    }
+      try {
+        const summaryDataPromise = api.get(GET_SUMMARY, {
+          signal: controller.signal,
+        });
+        const categoryBreakdownPromise = api.get(GET_CATEGORY_BREAKDOWN, {
+          signal: controller.signal,
+        });
+        const expenseDataPromise = api.get(GET_EXPENSES(5, 10), {
+          signal: controller.signal,
+        });
+        const alertsPromise = api.get(GET_ALERTS, {
+          signal: controller.signal,
+        });
+        const insightsPromise = api.get(GET_INSIGHTS, {
+          signal: controller.signal,
+        });
+        const promisesArray = [
+          summaryDataPromise,
+          categoryBreakdownPromise,
+          expenseDataPromise,
+          alertsPromise,
+          insightsPromise,
+        ];
+        const results = await Promise.allSettled(promisesArray);
+
+        results.forEach((result, idx) => {
+          if (result.status === "fulfilled") {
+            const resultData = result.value.data;
+
+            switch (idx) {
+              case 0:
+                setStats(resultData);
+                break;
+
+              case 1:
+                setCategoryData(resultData);
+                break;
+
+              case 2:
+                setTransactions(resultData);
+                break;
+
+              case 3:
+                setAlerts(resultData);
+                break;
+
+              case 4:
+                setAiInsights(resultData);
+                break;
+            }
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoader(false);
+      }
+    };
+    fetchData();
     return () => {
       return controller.abort();
     };

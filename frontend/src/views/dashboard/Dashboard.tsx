@@ -17,7 +17,7 @@ const Dashboard = () => {
   } = useDashboard();
 
   return (
-    <div className="w-full flex-col p-[32px] gap-[32px]">
+    <div className="w-full flex flex-col p-[32px] gap-[32px]">
       <WelcomeSection aiInsights={aiInsights} />
       <SummaryCards stats={stats} />
       <ChartsSection
